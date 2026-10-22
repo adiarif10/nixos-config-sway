@@ -2,18 +2,15 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, pkgs, ... }:
-
-
-
+{ pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-../../modules/sway.nix
-../../modules/xfce.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ../../modules/sway.nix
+    ../../modules/xfce.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -47,14 +44,6 @@
     variant = "";
   };
 
-# Sway
-programs.sway = {
-enable = true;
-wrapperFeatures.gtk = true;
-
-};
-
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -77,14 +66,18 @@ wrapperFeatures.gtk = true;
   users.users."adiarif" = {
     isNormalUser = true;
     description = "adiarif";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+    ];
     packages = with pkgs; [
-    ghostty
-    gcc
-    ripgrep
-    fd
-    tree-sitter
-    # thunderbird 
+      ghostty
+      gcc
+      ripgrep
+      fd
+      tree-sitter
+      # thunderbird
     ];
   };
 
@@ -94,34 +87,35 @@ wrapperFeatures.gtk = true;
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-# paket sementara
-nix.settings.experimental-features = ["nix-command" "flakes"];
+  # paket sementara
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
-# setup nvim
+  # setup nvim
 
-programs.neovim = {
-  enable = true;
-  defaultEditor = true;
-  viAlias = true;
-  vimAlias = true;
-};
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+  };
 
-environment.systemPackages = with pkgs; [
-  git
-  curl
-  wget
-  unzip
-  xclip
-  wl-clipboard
-  libnotify
-  nil
-  nixfmt
-  stylua
-];
+  environment.systemPackages = with pkgs; [
+    git
+    curl
+    wget
+    unzip
+    xclip
+    wl-clipboard
+    libnotify
+    nil
+    nixfmt
+    stylua
+  ];
 
-virtualisation.docker.enable = true;
-
-
+  virtualisation.docker.enable = true;
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
