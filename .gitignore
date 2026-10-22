@@ -1,0 +1,17 @@
+# hasil build nix
+result
+result-*
+
+# direnv (kalau nanti pakai dev shell)
+.direnv/
+
+# editor
+*.swp
+*~
+.nvimlog
+
+# secret, jaga-jaga
+*.key
+*.pem
+.env
+secrets/

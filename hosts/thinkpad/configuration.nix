@@ -114,6 +114,9 @@ environment.systemPackages = with pkgs; [
   xclip
   wl-clipboard
   libnotify
+  nil
+  nixfmt
+  stylua
 ];
 
 virtualisation.docker.enable = true;
