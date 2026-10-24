@@ -10,6 +10,7 @@
     ./hardware-configuration.nix
     ../../modules/sway.nix
     ../../modules/xfce.nix
+    ../../modules/gc.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
