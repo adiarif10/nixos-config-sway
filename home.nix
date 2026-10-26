@@ -19,6 +19,8 @@
     typescript-language-server
     vtsls
     prettier
+    nodejs
+    pnpm
 
     #python
     python3
