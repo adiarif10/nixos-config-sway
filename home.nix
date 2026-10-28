@@ -21,6 +21,7 @@
     prettier
     nodejs
     pnpm
+    tailwindcss-language-server
 
     #python
     python3
@@ -40,4 +41,19 @@
     # lua (buat edit config nvchad)
     lua-language-server
   ];
+  # config shell with zsh
+  programs.zsh = {
+
+    enable = true;
+
+    oh-my-zsh = {
+      enable = true;
+      plugins = [
+        "git"
+        "sudo"
+      ];
+      theme = "robbyrussell";
+    };
+  };
+
 }

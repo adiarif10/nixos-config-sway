@@ -53,6 +53,7 @@
   };
 
   users.users."adiarif" = {
+    shell = pkgs.zsh;
     isNormalUser = true;
     description = "adiarif";
     extraGroups = [
