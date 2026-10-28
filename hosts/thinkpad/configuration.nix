@@ -52,6 +52,9 @@
     # jack.enable = true;
   };
 
+  # zsh shell enable on ssystem
+  programs.zsh.enable = true;
+
   users.users."adiarif" = {
     shell = pkgs.zsh;
     isNormalUser = true;
