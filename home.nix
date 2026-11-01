@@ -13,6 +13,7 @@
     ripgrep
     fd
     tree-sitter
+    zed-editor
 
     #js ts
     bun
