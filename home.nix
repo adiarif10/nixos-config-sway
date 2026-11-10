@@ -41,6 +41,9 @@
 
     # lua (buat edit config nvchad)
     lua-language-server
+
+    #font
+    nerd-fonts.jetbrains-mono
   ];
   # config shell with zsh
   programs.zsh = {
@@ -56,5 +59,42 @@
       theme = "robbyrussell";
     };
   };
+
+  #noctalia setup
+  programs.noctalia = {
+    enable = true;
+
+    settings = {
+      shell = {
+        font = "JetBrainsMono Nerd Font";
+      };
+      theme = {
+        mode = "dark";
+        source = "builtin";
+        builtin = "Catppuccin";
+      };
+    };
+  };
+
+  #sway setup
+
+  wayland.windowManager.sway = {
+    enable = true;
+    package = null; # sway-nya tetap dari programs.sway di NixOS
+    config = {
+      terminal = "ghostty";
+      bars = [ ]; # matiin swaybar, Noctalia punya bar sendiri
+      startup = [
+        { command = "noctalia"; }
+      ];
+    };
+    extraConfig = ''
+      include ~/.config/sway/noctalia
+    '';
+  };
+
+  #font jetbrainsmono
+
+  fonts.fontconfig.enable = true;
 
 }
